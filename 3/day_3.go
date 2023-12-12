@@ -22,7 +22,7 @@ type Gear struct {
 func main() {
 	result1, result2 := day_3("input.txt")
 	fmt.Println("Part 1: ", result1)
-    fmt.Println("Part 2: ", result2)
+	fmt.Println("Part 2: ", result2)
 }
 
 func day_3(input string) (int, int) {
@@ -40,7 +40,9 @@ func day_3(input string) (int, int) {
 
 func parse_data(file []byte) [][]string {
 
-	lines := strings.Split(string(file), "\n")
+	data := strings.Trim(string(file), "\n")
+
+	lines := strings.Split(data, "\n")
 	ly := len(lines)
 	lx := len(lines[0])
 
@@ -80,7 +82,7 @@ func process_data(matrix [][]string) (int, int) {
 					if valid {
 						sum += number_conv
 						if x >= 0 && y >= 0 {
-							key := fmt.Sprint(x)+ fmt.Sprint(y)
+							key := fmt.Sprint(x) + fmt.Sprint(y)
 
 							nums, ok := gears[key]
 							if ok {
@@ -100,13 +102,13 @@ func process_data(matrix [][]string) (int, int) {
 		}
 
 	}
-    gear_ratios_sum := 0
-    for _, gear:= range gears{
-        if len(gear) == 2{
-            gear_ratios_sum += gear[0]*gear[1]
-        }
+	gear_ratios_sum := 0
+	for _, gear := range gears {
+		if len(gear) == 2 {
+			gear_ratios_sum += gear[0] * gear[1]
+		}
 
-    }
+	}
 	return sum, gear_ratios_sum
 
 }
